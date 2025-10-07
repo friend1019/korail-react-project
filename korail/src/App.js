@@ -1,0 +1,50 @@
+import { Routes, Route } from "react-router-dom";
+import Layout from "component/Layout";
+import Home from "pages/Home";
+import Manual from "pages/manual/Manual";
+import Report119 from "pages/Report119";
+import MapPage from "pages/Map";
+import Settings from "pages/Settings";
+
+
+
+import Navigation from "pages/Navigation";
+import CprAed from "pages/manual/pages/CprAed";
+import Airway from "pages/manual/pages/Airway";
+import Bleeding from "pages/manual/pages/Bleeding";
+import Burn from "pages/manual/pages/Burn";
+import Fracture from "pages/manual/pages/Fracture";
+import Stroke from "pages/manual/pages/Stroke";
+import Seizure from "pages/manual/pages/Seizure";
+import Anaphylaxis from "pages/manual/pages/Anaphylaxis";
+import Drowning from "pages/manual/pages/Drowning";
+import Heat from "pages/manual/pages/Heat";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="manual" element={<Manual />} />
+        <Route path="report" element={<Report119 />} />
+        <Route path="map" element={<MapPage />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="nav" element={<Navigation />} /> {/* 지도 네비 페이지 */}
+        <Route
+          path="/manual/search"
+          element={<div>검색 화면 (추가 예정)</div>}
+        />
+        <Route path="/manual/cpr-aed" element={<CprAed />} />
+        <Route path="/manual/airway" element={<Airway />} />
+        <Route path="/manual/bleeding" element={<Bleeding />} />
+        <Route path="/manual/burn" element={<Burn />} />
+        <Route path="/manual/fracture" element={<Fracture />} />
+        <Route path="/manual/stroke" element={<Stroke />} />
+        <Route path="/manual/seizure" element={<Seizure />} />
+        <Route path="/manual/anaphylaxis" element={<Anaphylaxis />} />
+        <Route path="/manual/drowning" element={<Drowning />} />
+        <Route path="/manual/heat" element={<Heat />} />
+      </Route>
+    </Routes>
+  );
+}

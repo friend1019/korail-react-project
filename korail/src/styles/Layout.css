@@ -1,0 +1,40 @@
+/* ======= Layout 구조 전용 ======= */
+
+/* 앱 전체 틀 */
+.app-shell {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+/* 하단 메뉴 (고정) */
+.app-shell > nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 42rem;
+  height: 6rem; /* 메뉴 높이 */
+  background: #fff;
+  border-top: 1px solid #eee;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* 콘텐츠 영역 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 6rem; /* 메뉴만큼 띄움 */
+  box-sizing: border-box;
+}
+
+.app-content::-webkit-scrollbar {
+  display: none; /* Safari, Chrome, iOS */
+}

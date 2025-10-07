@@ -1,0 +1,128 @@
+/* 색 변수 */
+:root {
+  --bg: #ffffff;
+  --bg-sub: #f6f7f8;
+  --ink: #121212;
+  --ink-muted: #6a6a6a;
+  --line: #e9eaee;
+  --brand: #ff4d4f;
+}
+
+/* 페이지 래퍼 */
+.manual-wrap {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100%;
+}
+
+/* 검색 */
+.manual-search {
+  padding: 1.6rem;
+  background: var(--bg);
+}
+.manual-search__box {
+  width: 100%;
+  height: 5.2rem;
+  border-radius: 1.2rem;
+  border: 0.1rem solid var(--line);
+  background: var(--bg-sub);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0 1.6rem;
+  cursor: pointer;
+}
+.manual-search__box:focus-visible {
+  outline: 0.3rem solid #9cc2ff;
+  outline-offset: 0.2rem;
+}
+.manual-search__badge {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+.manual-search__placeholder {
+  font-size: 1.5rem;
+  color: var(--ink-muted);
+}
+.manual-search__icon {
+  font-size: 1.8rem;
+  opacity: 0.8;
+}
+
+/* 섹션 */
+.manual-section {
+  padding: 1.6rem;
+  border-top: 0.1rem solid var(--line);
+}
+.manual-section__title {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.manual-section__desc {
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+  margin-bottom: 1.2rem;
+}
+
+/* 카드 그리드 */
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 640px) {
+  .manual-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 카드 */
+.manual-card__button{
+  width: 100%;
+  background: var(--bg);
+  border-radius: 1.2rem;
+  padding: 1.6rem 1.2rem;
+  display: flex;                /* grid → flex */
+  flex-direction: column;       /* 세로 정렬 */
+  align-items: center;          /* 중앙 정렬 */
+  justify-content: center;
+  gap: 0.1rem;
+  text-align: center;           /* 텍스트 중앙 정렬 */
+  transition: transform .05s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+/* 아이콘 자리 */
+.icon-slot{
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+}
+
+/* 카드 텍스트 */
+.manual-card__text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;           /* 중앙 정렬 */
+  line-height: 1.2;
+}
+
+.manual-card__title-line {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.manual-card__caption {
+  font-size: 1.3rem;
+  color: var(--ink-muted);
+  margin-top: 0.3rem;
+}

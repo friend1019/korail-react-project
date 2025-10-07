@@ -1,0 +1,138 @@
+/* 공통 변수(프로젝트 전역에서 이미 선언했으면 중복 선언해도 무방) */
+:root{
+  --bg: #ffffff;
+  --bg-sub: #f6f7f8;
+  --ink: #121212;
+  --ink-muted: #6a6a6a;
+  --line: #e9eaee;
+  --brand: #ff4d4f;
+}
+
+/* 상세 레이아웃 */
+.manual-detail{
+  background: #f2f3f5;         /* 스샷과 비슷한 밝은 회색 바탕 */
+  padding: 1.6rem;
+}
+
+/* 헤더 */
+.detail-header{
+  margin: 1.2rem 0 1.2rem;
+}
+.detail-title{
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.detail-title--accent{
+  color: var(--brand);          /* 제목 빨강 강조 */
+}
+.detail-subtitle{
+  margin-top: .4rem;
+  font-size: 1.5rem;
+  color: var(--ink-muted);
+}
+
+/* 섹션 블록 기본 */
+.detail-block{
+  display: grid;
+  gap: 1.2rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+/* 콜아웃(라벨 + 문장) */
+.callout{
+  display: grid;
+  grid-template-columns: 7.4rem 1fr;  /* 라벨 고정폭 */
+  align-items: start;
+  gap: 1.0rem;
+}
+.callout__label{
+  font-size: 1.4rem;
+  font-weight: 800;
+  padding-top: .2rem;
+}
+.callout__label--primary{ color: var(--brand); }
+.callout__label--warn{
+  color: var(--brand);
+  position: relative;
+}
+.callout__label--warn::before{
+  content: "▲";
+  font-size: 1.2rem;
+  margin-right: .4rem;
+  position: relative;
+  top: -.1rem;
+}
+.callout__text{
+  font-size: 1.5rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* 영상 카드 리스트 - 세로 스택 & 폭 90%, 중앙 정렬 */
+.detail-videos{
+  width: 90%;
+  margin: 1.2rem auto 2.4rem;   /* 가운데 정렬 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* 비디오 카드 */
+.video-card{
+  display: block;
+  background: var(--bg);
+  border: .1rem solid var(--line);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 .4rem 1.2rem rgba(0,0,0,.05);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .05s ease, box-shadow .15s ease, border-color .15s ease;
+  width: 100%;                  /* 컨테이너(90%) 폭을 꽉 채움 */
+}
+.video-card:hover{
+  border-color: #d7d9df;
+  box-shadow: 0 .6rem 1.6rem rgba(0,0,0,.08);
+}
+.video-card:active{ transform: translateY(.2rem); }
+
+/* 썸네일: 이미지가 없을 때도 레이아웃 유지 */
+.video-thumb{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-sub);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  color: var(--ink-muted);
+}
+.video-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 메타(채널/제목) */
+.video-meta{
+  border-top: .1rem solid var(--line);
+  padding: 1.0rem 1.2rem 1.2rem;
+  background: var(--bg);
+}
+.video-channel{
+  font-size: 1.2rem;
+  color: var(--ink-muted);
+  margin-bottom: .4rem;
+}
+.video-title{
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* 반응형 */
+@media (min-width: 900px){
+  .manual-detail{ padding: 2.0rem 2.4rem; }
+}

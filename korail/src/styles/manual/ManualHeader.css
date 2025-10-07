@@ -1,0 +1,57 @@
+/* Header 전용 스타일 (10px = 1rem 기준) */
+.manual-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 6.0rem;
+  display: grid;
+  grid-template-columns: 6rem 1fr 6rem;
+  align-items: center;
+  background: #0f0f10;
+  color: #fff;
+  padding: 0 1.6rem;
+  border-bottom: 0.1rem solid #111;
+}
+
+.manual-header__title{
+  text-align: center;
+  font-size: 2.0rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.manual-header__side{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.manual-header__side--right{
+  justify-content: flex-end;
+}
+
+/* 기존 헤더 스타일 유지 */
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.0rem;
+  height: 4.0rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.back-button:hover {
+  opacity: 0.7;
+}
+
+.back-button svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  stroke-width: 2.5;
+}

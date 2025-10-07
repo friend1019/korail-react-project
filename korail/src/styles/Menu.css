@@ -1,0 +1,45 @@
+.bottom-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 6rem;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 42rem;
+  z-index: 1000;
+}
+
+/* 각 버튼 스타일 */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.menu-item svg {
+  margin-bottom: 0.3rem;
+}
+
+/* 활성화된 메뉴 스타일 */
+.menu-item.active {
+  color: var(--color-main);
+  font-weight: 600;
+}
+
+/* 119 신고 버튼 강조 */
+.menu-item.report {
+  color: #ff3b30;
+  font-weight: 600;
+}
+.menu-item.report svg {
+  transform: scale(1.1);
+}
