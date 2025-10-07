@@ -1,0 +1,258 @@
+:root {
+  --bg: #1E1E1E;
+  --bg-card: #ffffffee;
+  --ink: #111;
+  --ink-muted: #6a6a6a;
+  --line: #e9eaee;
+  --brand: #ff4d4f; /* 응급 포인트 */
+}
+
+/* 래퍼 */
+.home-wrap {
+  min-height: 100%;
+  background: #f6f7f8;
+  color: #fff;
+  padding-bottom: 6rem; /* 하단 탭바 여백 */
+}
+
+/* 히어로 */
+.home-hero {
+  padding: 1.6rem 1.6rem 2rem;
+  background: #1E1E1E;
+  margin-bottom: -8rem;
+}
+.home-hero__lead {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  opacity: 0.95;
+  margin-top: 10rem;
+  margin-bottom: 1.2rem;
+}
+
+/* 응급/일반 모드 카드 */
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+.mode-card {
+  position: relative;
+  border: none;
+  border-radius: 1.2rem;
+  height: 12rem;
+  padding: 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.05s ease, box-shadow 0.15s ease;
+}
+.mode-card:active {
+  transform: translateY(0.2rem);
+}
+.mode-card__texts {
+  z-index: 1;
+}
+.mode-card__title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.mode-card__desc {
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+.mode-card__icon {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  width: 7.6rem;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.mode-card--emergency {
+  background: #F12A1A;
+  color: #fff;
+}
+.mode-card--general {
+  background: #1E1E1E;
+  color: #eaeaea;
+  border: 0.1rem solid rgba(255, 255, 255, 0.08);
+}
+
+/* ===============================
+   근처 섹션
+================================*/
+.home-nearby {
+  background: #f6f7f8;
+  color: var(--ink);
+  margin-top: 2rem;
+  padding: 8.6rem 0 2rem;
+}
+
+/* 헤드: 위치 + 타이틀 */
+.nearby-head {
+  padding: 0 1.6rem;
+  margin-bottom: 0.6rem;
+}
+.nearby-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.nearby-location {
+  font-size: 1.2rem;
+  color: #9a9aa0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.gps-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #7b7b84;
+  margin-right: 0.4rem;
+  stroke-width: 1.5; /* 얇은 라인 */
+  vertical-align: middle;
+}
+.nearby-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #222;
+}
+
+/* 칩 + 모두보기 한 줄 */
+.nearby-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* 칩 */
+.nearby-chips {
+  display: flex;
+  gap: 0.6rem;
+}
+.chip {
+  height: 2.8rem;
+  padding: 0 1.2rem;
+  border-radius: 999rem;
+  border: none;
+  background: #ececef;
+  color: #9a9aa0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.chip--active {
+  background: #111;
+  color: #fff;
+}
+
+/* 모두보기 */
+.nearby-more {
+  background: transparent;
+  border: none;
+  color: #9a9aa0;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* ===============================
+   카드 리스트 (가로 스크롤)
+================================*/
+.home-cards {
+  margin: 0;
+  padding: 0 1.6rem;
+  list-style: none;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 85%;
+  gap: 1.2rem;
+
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.home-cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* 장소 카드 */
+.place-card {
+  background: #fff;
+  border: 0.2rem solid transparent;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.05s ease;
+}
+.place-card:active {
+  transform: translateY(0.2rem);
+}
+.place-thumb {
+  height: 12rem;
+  background: linear-gradient(135deg, #eceff3, #dde3ee);
+}
+.place-meta {
+  padding: 1.2rem 1.2rem 1.4rem;
+}
+.place-distance {
+  font-size: 1.2rem;
+  color: #7b7b84;
+  margin-bottom: 0.2rem;
+}
+.place-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+.place-desc {
+  font-size: 1.3rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 스켈레톤 로딩 */
+.is-skeleton .place-thumb {
+  background: linear-gradient(90deg, #eceff3, #f3f5f8, #eceff3);
+  background-size: 200% 100%;
+  animation: sheen 1.2s linear infinite;
+}
+.skel {
+  height: 1.2rem;
+  background: #eef1f5;
+  border-radius: 0.6rem;
+  margin: 0.5rem 0;
+}
+.skel--title {
+  width: 60%;
+  height: 1.6rem;
+}
+.skel--para {
+  height: 3.6rem;
+}
+
+@keyframes sheen {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 반응형 */
+@media (min-width: 900px) {
+  .home-cards {
+    grid-auto-columns: 45%;
+  }
+}

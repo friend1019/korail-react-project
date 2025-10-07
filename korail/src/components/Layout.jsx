@@ -1,4 +1,4 @@
-import Menu from 'component/Menu'
+import Menu from 'components/Menu'
 import { Outlet } from 'react-router-dom'
 import 'styles/Layout.css'
 
