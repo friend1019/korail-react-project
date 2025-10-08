@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 import Home from "pages/Home";
 import Manual from "pages/manual/Manual";
 import Report119 from "pages/Report119";
-import MapPage from "pages/Map";
+import MapPage from "pages/map/Map";
 import Settings from "pages/Settings";
 import Navigation from "pages/Navigation";
 

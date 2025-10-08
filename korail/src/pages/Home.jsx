@@ -5,6 +5,8 @@ import "styles/Home.css";
 import { Crosshair } from "lucide-react";
 import emergencyIcon from "assets/home/emergency.svg";
 import commonIcon from "assets/home/common.svg";
+import aedThumb from "assets/manual/manual1.svg";
+import { api } from "libs/api.js";
 
 const API_BASE =
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_BASE_URL) ||
@@ -14,22 +16,25 @@ const API_BASE =
 // ----- 더미 데이터 -----
 const DUMMY_AED = [
   {
-    id: "aed1",
-    name: "지인대병원",
-    distance: 130,
-    desc: "Lorem ipsum dolor sit amet consectetur. Odio nulla ut lectus blandit et faucibus.",
+    id: "aed-sample-1",
+    name: "우암로 234 (가양동)",
+    distance: 440,
+    minutes: 6,
+    desc: "구급차 · 도보 6분",
   },
   {
-    id: "aed2",
-    name: "서산시 보건소",
-    distance: 310,
-    desc: "Pellentesque id ante lacus leo diam justo adipiscing.",
+    id: "aed-sample-2",
+    name: "둔산북로 232-11",
+    distance: 510,
+    minutes: 7,
+    desc: "1층 중앙현관 · 도보 7분",
   },
   {
-    id: "aed3",
-    name: "한서대학교 AED",
-    distance: 520,
-    desc: "캠퍼스 내 학생회관 1층 안내데스크 옆.",
+    id: "aed-sample-3",
+    name: "테크노중앙로 155",
+    distance: 630,
+    minutes: 9,
+    desc: "편의점 내부 · 도보 9분",
   },
 ];
 
@@ -55,8 +60,51 @@ const DUMMY_ER = [
 ];
 
 // ----- 유틸: API 시도 후 실패 시 더미 폴백 -----
+function toMeters(val) {
+  if (typeof val !== "number" || Number.isNaN(val)) return null;
+  return Math.round(val);
+}
+
+function adaptAed(item, idx) {
+  if (!item || typeof item !== "object") return null;
+  const distance =
+    toMeters(item.walkingDistanceMeters) ?? toMeters(item.distanceMeters);
+  const time =
+    typeof item.walkingTimeMinutes === "number"
+      ? Math.round(item.walkingTimeMinutes)
+      : null;
+
+  const descParts = [];
+  if (item.buildPlace) descParts.push(item.buildPlace);
+  if (time) descParts.push(`도보 ${time}분`);
+
+  return {
+    id: item.id ?? item.buildAddress ?? `aed-${idx}`,
+    name: item.buildAddress || item.facilityName || "AED 위치",
+    distance,
+    minutes: time,
+    desc:
+      descParts.length > 0
+        ? descParts.join(" · ")
+        : "상세 위치 정보가 준비 중입니다.",
+  };
+}
+
 async function loadNearby(type) {
-  if (!API_BASE) return type === "aed" ? DUMMY_AED : DUMMY_ER;
+  if (type === "aed") {
+    try {
+      const list = await api("/location");
+      if (!Array.isArray(list) || list.length === 0) return DUMMY_AED;
+      const adapted = list
+        .map(adaptAed)
+        .filter((item) => item && item.name);
+      return adapted.length > 0 ? adapted : DUMMY_AED;
+    } catch {
+      return DUMMY_AED;
+    }
+  }
+
+  if (!API_BASE) return DUMMY_ER;
 
   try {
     const res = await fetch(`${API_BASE}/nearby?type=${type}`);
@@ -64,11 +112,11 @@ async function loadNearby(type) {
     const json = await res.json();
     const list = json?.data || json?.results || json;
     if (!Array.isArray(list) || list.length === 0) {
-      return type === "aed" ? DUMMY_AED : DUMMY_ER;
+      return DUMMY_ER;
     }
     return list;
   } catch {
-    return type === "aed" ? DUMMY_AED : DUMMY_ER;
+    return DUMMY_ER;
   }
 }
 
@@ -243,9 +291,22 @@ export default function Home() {
                     )
                   }
                 >
-                  <div className="place-thumb" />
+                  <div className="place-thumb">
+                    {mode === "aed" ? (
+                      <img
+                        src={aedThumb}
+                        alt="AED"
+                        className="place-thumb__img"
+                      />
+                    ) : null}
+                  </div>
                   <div className="place-meta">
-                    <div className="place-distance">{it.distance}m</div>
+                    <div className="place-distance">
+                      {typeof it.distance === "number" ? `${it.distance}m` : ""}
+                      {typeof it.minutes === "number"
+                        ? ` · ${it.minutes}분`
+                        : ""}
+                    </div>
                     <div className="place-name">{it.name}</div>
                     <p className="place-desc">{it.desc}</p>
                   </div>

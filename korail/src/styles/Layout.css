@@ -38,3 +38,10 @@
 .app-content::-webkit-scrollbar {
   display: none; /* Safari, Chrome, iOS */
 }
+
+.app-content--full {
+  padding-bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

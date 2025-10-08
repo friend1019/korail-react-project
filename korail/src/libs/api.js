@@ -1,9 +1,15 @@
 import axios from 'axios'
 
+const baseURL = process.env.REACT_APP_API_BASE_URL?.trim()
+
+if (!baseURL) {
+  console.warn('API base URL가 설정되지 않았습니다. .env 파일을 확인하세요.')
+}
+
 const client = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || '',
-  headers: { 'Content-Type': 'application/json' },
+  baseURL: baseURL || undefined,
   withCredentials: false, // 로그인 없음
+  timeout: 10000,
 })
 
 // 에러 메시지 일원화

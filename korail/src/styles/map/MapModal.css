@@ -1,0 +1,146 @@
+.map-modal {
+  position: absolute;
+  left: 50%;
+  bottom: 4.6rem;
+  width: 100%;
+  max-width: 42rem;
+  padding: 0 1.5rem 1.5rem;
+  transform: translate(-50%, calc(100% - 7.5rem));
+  transition: transform 0.35s ease;
+  z-index: 900;
+}
+
+.map-modal--open {
+  transform: translate(-50%, 0);
+}
+
+.map-modal__surface {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1.5rem 1.5rem 0 0;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 0 1.5rem 1.75rem;
+  min-height: 11rem;
+}
+
+.map-modal__grab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0 3.25rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.map-modal__pill {
+  display: inline-block;
+  width: 3.5rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.map-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0 1.25rem;
+  cursor: pointer;
+}
+
+.map-modal__caption {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(17, 24, 39, 0.7);
+}
+
+.map-modal__circle-btn {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111827;
+  cursor: pointer;
+}
+
+.map-modal__circle-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.map-modal__circle-btn:active {
+  background: rgba(229, 231, 235, 0.85);
+}
+
+.map-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.map-modal__title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.map-modal__distance {
+  font-weight: 500;
+  color: rgba(17, 24, 39, 0.55);
+}
+
+.map-modal__card {
+  width: 100%;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.map-modal__address {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(17, 24, 39, 0.8);
+}
+
+.map-modal__detail,
+.map-modal__phone,
+.map-modal__placeholder {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(17, 24, 39, 0.68);
+}
+
+.map-modal__placeholder {
+  color: rgba(17, 24, 39, 0.45);
+}
+
+@media (max-width: 480px) {
+  .map-modal__surface {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .map-modal {
+    padding: 0 1rem 1.25rem;
+  }
+}
